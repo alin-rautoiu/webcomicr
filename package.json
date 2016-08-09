@@ -1,0 +1,25 @@
+{
+  "name": "webcomicr",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webcomicr.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "ejs": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webcomicr.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alin-rautoiu/webcomicr.git"
+  },
+  "author": "Alin Rautoiu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alin-rautoiu/webcomicr/issues"
+  },
+  "homepage": "https://github.com/alin-rautoiu/webcomicr#readme"
+}
