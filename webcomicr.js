@@ -1,6 +1,6 @@
 var series = [
     {
-        'id': 1,
+        'id': '1',
         'name': 'Cum ar fi...',
         'episodes': [
             {
@@ -52,6 +52,23 @@ var fs = require('fs');
 
 var app = express();
 
+function buildEpisodesList(i) {
+    var thumbnails = [];    
+    thumbnails['series_name'] = series[i].name;
+    
+    for (var j = 0; j < series[i].episodes.length; j++) {
+        var thumbnail = {};
+
+        thumbnail['id'] = series[i].episodes[j].id;
+        thumbnail['name'] = series[i].episodes[j].name;
+        thumbnail['thumbnail'] = series[i].episodes[j].images[0].path;
+
+        thumbnails.push(thumbnail);
+    }
+
+    return thumbnails;
+}
+
 app.engine('html', require('ejs').renderFile);
 
 
@@ -72,6 +89,21 @@ app.get('/getSeries/:id', function(req, res) {
 
     res.send("No such series!");
     return;    
+});
+
+app.get('/getEpisodesList/:seriesId', function(req, res) {
+    var seriesId = req.params.seriesId;
+   
+    if (series[seriesId] == null) {
+        res.send("No such series!");
+        return;    
+    }
+
+    var episodeList = buildEpisodesList(seriesId);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(episodeList));
+    return;
 });
 
 var server = app.listen(process.env.PORT || 3002);
