@@ -87,7 +87,7 @@ var series = [
                 'id': '3',
                 'row': '2',
                 'columns': '4',
-                'name': 'Ep 2',
+                'name': 'Ep 3',
                 'images': [
                     {
                         'id': '1',
@@ -173,6 +173,16 @@ function getSeriesById(id) {
     }
 }
 
+function getEpisodeById(seriesId, episodeId) {
+    var episodes = getSeriesById(seriesId).episodes;
+
+    for (var i = 0; i < episodes.length; i++) {
+        if (episodes[i].id == episodeId) {
+            return episodes[i];
+        }
+    }
+}
+
 app.engine('html', require('ejs').renderFile);
 
 
@@ -191,6 +201,20 @@ app.get('/getSeries/:id', function(req, res) {
 
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(theSeries));
+    return;        
+});
+
+app.get('/getEpisode/:id', function(req, res) {
+    var id = req.params.id;
+
+    var theEpisode = getEpisodeById(1, id);
+    if (theEpisode == null) {
+        res.send("No such episode!");
+        return;  
+    }
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(theEpisode));
     return;        
 });
 
@@ -216,6 +240,7 @@ app.get('/getSeriesList/', function(req, res) {
     res.send(JSON.stringify(episodeList));
     return;
 });
+
 
 var server = app.listen(process.env.PORT || 3002);
 
