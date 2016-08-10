@@ -55,13 +55,29 @@ var app = express();
 function buildEpisodesList(i) {
     var thumbnails = [];    
     thumbnails['series_name'] = series[i].name;
-    
+
     for (var j = 0; j < series[i].episodes.length; j++) {
         var thumbnail = {};
 
         thumbnail['id'] = series[i].episodes[j].id;
         thumbnail['name'] = series[i].episodes[j].name;
         thumbnail['thumbnail'] = series[i].episodes[j].images[0].path;
+
+        thumbnails.push(thumbnail);
+    }
+
+    return thumbnails;
+}
+
+function buildSeriesList() {
+    var thumbnails = [];    
+    
+    for (var i = 0; i < series.length; i++) {
+        var thumbnail = {};
+
+        thumbnail['id'] = series[i].id;
+        thumbnail['name'] = series[i].name;
+        thumbnail['thumbnail'] = series[i].episodes[0].images[0].path;
 
         thumbnails.push(thumbnail);
     }
@@ -100,6 +116,21 @@ app.get('/getEpisodesList/:seriesId', function(req, res) {
     }
 
     var episodeList = buildEpisodesList(seriesId);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(episodeList));
+    return;
+});
+
+app.get('/getSeriesList/', function(req, res) {
+    var seriesId = req.params.seriesId;
+   
+    if (series == null) {
+        res.send("No such series!");
+        return;    
+    }
+
+    var episodeList = buildSeriesList();
 
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(episodeList));
