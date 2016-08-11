@@ -324,10 +324,14 @@ app.get('/getSeries/:id', function(req, res) {
     return;        
 });
 
-app.get('/getEpisode/:id', function(req, res) {
-    var id = req.params.id;
+app.get('/getEpisode/', function(req, res) {
+    var episodeId = req.query.episodeId;
+    var seriesId = req.query.seriesId;
 
-    var theEpisode = getEpisodeById(1, id);
+    console.log(episodeId);
+    console.log(seriesId);
+
+    var theEpisode = getEpisodeById(seriesId, episodeId);
     if (theEpisode == null) {
         res.send("No such episode!");
         return;  
