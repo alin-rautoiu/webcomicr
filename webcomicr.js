@@ -11,34 +11,42 @@ var series = [
                 'images': [
                     {
                         'id': '1',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_1.jpeg'
                     },
                     {
                         'id': '2',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_2.jpeg'
                     },
                     {
                         'id': '3',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_3.jpeg'
                     },
                     {
                         'id': '4',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_4.jpeg'
                     },
                     {
                         'id': '5',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_5.jpeg'
                     },
                     {
                         'id': '6',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_6.jpeg'
                     },
                     {
                         'id': '7',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_7.jpeg'
                     },
                     {
                         'id': '8',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/01/1_8.jpeg'
                     }
                 ]
@@ -51,34 +59,42 @@ var series = [
                 'images': [
                     {
                         'id': '1',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_1.jpeg'
                     },
                     {
                         'id': '2',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_2.jpeg'
                     },
                     {
                         'id': '3',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_3.jpeg'
                     },
                     {
                         'id': '4',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_4.jpeg'
                     },
                     {
                         'id': '5',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_5.jpeg'
                     },
                     {
                         'id': '6',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_6.jpeg'
                     },
                     {
                         'id': '7',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_7.jpeg'
                     },
                     {
                         'id': '8',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/02/2_8.jpeg'
                     }
                 ]
@@ -91,34 +107,42 @@ var series = [
                 'images': [
                     {
                         'id': '1',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_1.jpeg'
                     },
                     {
                         'id': '2',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_2.jpeg'
                     },
                     {
                         'id': '3',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_3.jpeg'
                     },
                     {
                         'id': '4',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_4.jpeg'
                     },
                     {
                         'id': '5',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_5.jpeg'
                     },
                     {
                         'id': '6',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_6.jpeg'
                     },
                     {
                         'id': '7',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_7.jpeg'
                     },
                     {
                         'id': '8',
+                        'colspan': '1',
                         'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum ar fi/03/3_8.jpeg'
                     }
                 ]
