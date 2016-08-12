@@ -151,10 +151,38 @@ var series = [
     }]
 
 var express = require('express');
+var mongoose = require ("mongoose");
 var path = require('path');
 var fs = require('fs');
 
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/WebcomicrMongoose';
+
+var seriesSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    episodes: [
+        {
+            id: Number,
+            row: Number,
+            columns: Number,
+            name: String,
+            images: [
+                {
+                    id: Number,
+                    colspan: Number,
+                    path: String
+                }
+            ]
+        }
+    ]
+});    
+
 var app = express();
+
+
 
 function buildEpisodesList(theSeries) {
     var thumbnails = [];    
