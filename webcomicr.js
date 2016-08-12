@@ -247,38 +247,26 @@ var series = [
 ]
 
 var express = require('express');
-var mongoose = require ("mongoose");
 var path = require('path');
 var fs = require('fs');
-
-var uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
-    'mongodb://localhost/WebcomicrMongoose';
-
-var seriesSchema = new mongoose.Schema({
-    id: Number,
-    name: String,
-    episodes: [
-        {
-            id: Number,
-            row: Number,
-            columns: Number,
-            name: String,
-            images: [
-                {
-                    id: Number,
-                    colspan: Number,
-                    path: String
-                }
-            ]
-        }
-    ]
-});    
-
+var pg = require('pg');
 var app = express();
 
 
+var dbURL = process.env.DATABASE_URL || 'postgres://jrtfbkxfelyvvm:D-CfjK6MW-OeK2AXnlkBLQtH3O@ec2-23-21-219-12.compute-1.amazonaws.com:5432/d8ppu14gbaacn0';
+
+app.get('/db', function (request, response) {
+    console.log(dbURL);
+  pg.connect(dbURL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
 
 function buildEpisodesList(theSeries) {
     var thumbnails = [];    
