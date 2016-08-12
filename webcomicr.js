@@ -251,21 +251,92 @@ var path = require('path');
 var fs = require('fs');
 var pg = require('pg');
 var app = express();
+var Sequelize = require("sequelize");
+
+var dbURL = process.env.DATABASE_URL || '';
+
+var sequelize = new Sequelize('d8ppu14gbaacn0', 'jrtfbkxfelyvvm', 'D-CfjK6MW-OeK2AXnlkBLQtH3O', {
+  host: 'ec2-23-21-219-12.compute-1.amazonaws.com',
+  dialect: 'postgres',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+    ssl: true
+});
+
+var Series = sequelize.define('series', {
+  name:Sequelize.STRING,
+    }, {
+  freezeTableName: true // Model tableName will be the same as the model name
+});
+
+var Episode = sequelize.define('episode', {
+  name: Sequelize.STRING,
+  rows: Sequelize.INTEGER,
+  columns: Sequelize.INTEGER,
+  seriesId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: Series,
+        key: 'id',
+      }
+  }
+}, {
+  freezeTableName: true // Model tableName will be the same as the model name
+});
 
 
-var dbURL = process.env.DATABASE_URL || 'postgres://jrtfbkxfelyvvm:D-CfjK6MW-OeK2AXnlkBLQtH3O@ec2-23-21-219-12.compute-1.amazonaws.com:5432/d8ppu14gbaacn0';
+
+var Image = sequelize.define('image', {
+    colspan: Sequelize.INTEGER,
+    path: Sequelize.STRING,
+    episodeId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: Episode,
+            key: 'id'
+        }
+    }
+});
+
+
+
+Series.sync({force: true}).then(function () {
+  return Series.create({
+    name: 'Cum ar fi...'
+  });
+});
+
+Episode.sync({force: true}).then(function () {
+  return Episode.create({
+    name: 'Ep. 1',
+    rows: '2',
+    columns: '4',
+    seriesId: '1'
+  });
+});
+
+
+Image.sync({force: true}).then(function () {
+  return Image.create({
+    colspan: '2',
+    path: 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/cum%20ar%20fi/01/1_1.jpeg',
+    episodeId: '1'
+  });
+});
+
+Series.hasMany(Episode, {as: 'Episodes'});
+Episode.hasMany(Image, {as: 'Images'});
 
 app.get('/db', function (request, response) {
-    console.log(dbURL);
-  pg.connect(dbURL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
+    Series.findAll({include: [{model: Episode, as: 'Episodes'}]})
+    .success(function(series) {
+        response.send(series);
     });
-  });
+    
 });
 
 function buildEpisodesList(theSeries) {

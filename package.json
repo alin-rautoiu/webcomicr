@@ -4,8 +4,10 @@
   "description": "",
   "main": "webcomicr.js",
   "dependencies": {
+    "ejs": "^2.4.2",
     "express": "^4.14.0",
-    "ejs": "^2.4.2"
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.0"
   },
   "devDependencies": {},
   "scripts": {
