@@ -148,7 +148,103 @@ var series = [
                 ]
             }
         ]
-    }]
+    },
+    {
+        'id': '2',
+        'name': 'Olvlildliu Herman, explorator',
+        'episodes': [
+            {
+                'id': '4',
+                'row': '4',
+                'columns': '3',
+                'name': 'Ep 1',
+                'images': [
+                    {
+                        'id': '1',
+                        'colspan': '3',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/01.png'
+                    },
+                    {
+                        'id': '2',
+                        'colspan': '3',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/02.png'
+                    },
+                    {
+                        'id': '3',
+                        'colspan': '2',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/03.png'
+                    },
+                    {
+                        'id': '4',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/04.png'
+                    },
+                    {
+                        'id': '5',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/05.jpg'
+                    },
+                    {
+                        'id': '6',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/06.jpg'
+                    },
+                    {
+                        'id': '7',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/07.jpg'
+                    },
+                    {
+                        'id': '8',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/08.jpg'
+                    },
+                    {
+                        'id': '9',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/09.jpg'
+                    },
+                    {
+                        'id': '10',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/10.jpg'
+                    },
+                    {
+                        'id': '11',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/11.jpg'
+                    },
+                    {
+                        'id': '12',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/12.jpg'
+                    },
+                    {
+                        'id': '13',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/13.jpg'
+                    },
+                    {
+                        'id': '14',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/14.jpg'
+                    },
+                    {
+                        'id': '15',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/15.jpg'
+                    },
+                    {
+                        'id': '16',
+                        'colspan': '1',
+                        'path': 'https://raw.githubusercontent.com/alin-rautoiu/webcomicr/master/issues/Olvildliu/01/16.jpg'
+                    }
+                ]                    
+            }
+        ]
+
+    }
+]
 
 var express = require('express');
 var mongoose = require ("mongoose");
@@ -256,10 +352,14 @@ app.get('/getSeries/:id', function(req, res) {
     return;        
 });
 
-app.get('/getEpisode/:id', function(req, res) {
-    var id = req.params.id;
+app.get('/getEpisode/', function(req, res) {
+    var episodeId = req.query.episodeId;
+    var seriesId = req.query.seriesId;
 
-    var theEpisode = getEpisodeById(1, id);
+    console.log(episodeId);
+    console.log(seriesId);
+
+    var theEpisode = getEpisodeById(seriesId, episodeId);
     if (theEpisode == null) {
         res.send("No such episode!");
         return;  
