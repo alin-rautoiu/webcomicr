@@ -112,7 +112,6 @@ app.get('/getSeries/:id', function(req, res) {
 });
 
 app.get('/getEpisode/', function(req, res) {
-    var episodeId = req.query.episodeId;
     var seriesId = req.query.seriesId;
 
     Episode
