@@ -130,7 +130,7 @@ app.get('/getSeries/:id', function(req, res) {
 });
 
 app.get('/getEpisode/', function(req, res) {
-    var seriesId = req.query.seriesId;
+    var episodeId = req.query.episodeId;
 
     Episode
         .findById(episodeId)
